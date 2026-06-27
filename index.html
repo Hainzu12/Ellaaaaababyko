@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Love ko baby ko na si Ella</title>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="ella.css">
+</head>
+<body>
+	<main id="app">
+    <audio id="bgMusic" preload="auto" loop>
+      <source src="Sunflower.mp3" type="audio/mpeg">
+    </audio>
+
+		<section class="screen intro active" id="intro">
+			<h1 class="logo">Try mo to laruin, baby hehheh</h1>
+			<p class="lead">start mo plsplsplspls</p>
+			<button id="startBtn" class="cta">Start</button>
+		</section>
+
+		<section class="screen game" id="game" aria-hidden="true">
+			<header class="game-header">
+				<div class="counter">Hearts: <span id="heartCount">0</span>/5</div>
+				<div class="controls">
+					<button id="musicToggle" class="icon-btn" aria-pressed="false">🎵</button>
+					<input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Music volume" />
+					<button id="sfxToggle" class="icon-btn">🔊</button>
+				</div>
+			</header>
+
+			<div class="stage">
+				<p class="game-instructions">Tap 5 times to collect hearts! kasi " I Love You So Much!" HAHAHAHA</p>
+				<div class="status-row">
+					<div class="card-status">Cards flipped: <span id="cardCount">0</span>/3</div>
+					<div id="unlockHint" class="unlock-hint">Tap the heart field to begin.</div>
+				</div>
+				<div id="heartField" class="heart-field" aria-live="polite"></div>
+
+				<div class="cards" id="cards">
+					<div class="card" data-index="0"><div class="card-front"><span class="card-cover">?</span></div><div class="card-back"><img src="16753ee4-f375-4e1e-ae21-9148e7c77b0f.jpg" alt="Memory one"></div></div>
+					<div class="card" data-index="1"><div class="card-front"><span class="card-cover">?</span></div><div class="card-back"><img src="ac25ba1d-a2b0-4121-a9a7-ba47740db4a2.jpg" alt="Memory two"></div></div>
+					<div class="card" data-index="2"><div class="card-front"><span class="card-cover">?</span></div><div class="card-back"><img src="cf2581e9-34a6-464b-8dc8-aa8ea3be6718.jpg" alt="Memory three"></div></div>
+				</div>
+			</div>
+
+			<footer class="game-footer">
+				<button id="nextBtn" class="cta" disabled>Next</button>
+			</footer>
+		</section>
+
+		<section class="screen question" id="question" aria-hidden="true">
+			<h2 class="question-text">Love mo ba si Gabrot? 😁😁😁💕</h2>
+			<div class="button-container">
+				<button id="yesBtn" class="cta yes-btn">YES</button>
+				<button id="noBtn" class="cta no-btn">NO</button>
+			</div>
+		</section>
+
+		<section class="screen reveal" id="reveal" aria-hidden="true">
+			<h2 id="revealTitle">WHOAWHOAWHOAAA I LOVE YOU SO MUCH, BABYY! OPEN MO YUNG LETTER 💕</h2>
+			<button id="openLetterBtn" class="cta">CLICK MO TOOO</button>
+			<div id="letter" class="letter" hidden></div>
+			<div class="reveal-actions">
+				<button id="downloadBtn" class="muted">Download Letter</button>
+				<button id="restartBtn" class="muted">Restart</button>
+			</div>
+		</section>
+	</main>
+
+	<canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+	<script src="ella.js" defer></script>
+</body>
+</html>
