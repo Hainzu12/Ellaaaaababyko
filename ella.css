@@ -9,19 +9,23 @@
 }
 
 *{box-sizing:border-box}
-html,body,#app{height:100%}
+html,body{min-height:100%}
 body{
 	margin:0;font-family:Poppins,system-ui,Segoe UI,Arial; background:linear-gradient(180deg,var(--bg),#fff);
 	color:var(--crushed-berry);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-	display:flex;align-items:center;justify-content:center;padding:16px;
+	display:flex;align-items:flex-start;justify-content:center;padding:16px 0;min-height:100vh;
 }
 
-#app{width:min(100%, 560px);display:grid;place-items:center}
+#app{width:min(100%, 560px);display:grid;place-items:center;margin:0 auto;}
 
 .screen{max-width:520px;width:100%;background:rgba(255,255,255,0.9);border-radius:18px;padding:24px;box-shadow:0 6px 30px rgba(136,13,30,0.12);transform-origin:center;}
 .screen:not(.active){display:none}
 .screen.active{display:block}
 [hidden]{display:none!important}
+
+body, html {overflow-x:hidden;}
+
+.screen{overflow:hidden;}
 .intro.active{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;text-align:center}
 
 .logo{font-family:'Dancing Script',cursive;font-size:44px;margin:6px 0;color:var(--crushed-berry);text-align:center}
@@ -37,8 +41,8 @@ body{
 .heart-field{min-height:90px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;cursor:pointer;padding:10px;border:1px dashed rgba(221,45,74,0.2);border-radius:16px;background:rgba(252,240,245,0.75)}
 .heart{width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--pink-mist);color:white;font-size:22px;box-shadow:0 6px 10px rgba(0,0,0,0.08);}
 
-.cards{display:flex;gap:12px;justify-content:center;margin-top:16px}
-.card{width:84px;height:112px;perspective:800px;position:relative;cursor:pointer;transform-style:preserve-3d}
+.cards{display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.card{width:84px;height:112px;perspective:800px;position:relative;cursor:pointer;transform-style:preserve-3d;flex:0 0 84px}
 .card-front,.card-back{width:100%;height:100%;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;backface-visibility:hidden;position:absolute;transition:transform 420ms cubic-bezier(.2,.9,.2,1)}
 .card-front{background:linear-gradient(180deg,#fff,var(--light-cyan));box-shadow:0 6px 16px rgba(12,12,12,0.06)}
 .card-back{background:linear-gradient(180deg,var(--raspberry),var(--bubblegum-pink));transform:rotateY(180deg)}
@@ -60,6 +64,23 @@ button:focus{outline:3px solid rgba(203,238,243,0.4)}
 .controls input[type=range]{width:88px}
 .game-footer{display:flex;justify-content:center;margin-top:12px}
 
+.button-container{width:100%}
+
+@media(max-width:520px){
+	body{padding:16px 12px;}
+	#app{width:100%;}
+	.screen{padding:18px;}
+	.logo{font-size:36px;}
+	.question-text{font-size:28px;}
+	.cta{width:100%;text-align:center;}
+	.button-container{gap:12px;}
+	.controls input[type=range]{width:100%;max-width:160px;}
+	.cards{gap:10px;}
+	.card{width:72px;height:96px;}
+	.heart-field{min-height:80px;padding:8px;}
+	.reveal .letter{max-height:50vh;}
+}
+
 .reveal.active{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;text-align:center}
 
 .question.active{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;text-align:center;gap:24px}
@@ -69,7 +90,7 @@ button:focus{outline:3px solid rgba(203,238,243,0.4)}
 .no-btn{position:relative;transition:all 120ms ease-out;cursor:pointer}
 .no-btn.dodging{position:fixed;pointer-events:auto!important}
 
-.reveal .letter{white-space:pre-wrap;background:linear-gradient(180deg,#fff, #fff7fb);padding:18px;border-radius:12px;margin:18px auto 0;color:var(--muted);box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);width:min(100%, 420px);line-height:1.7;text-align:center}
+.reveal .letter{white-space:pre-wrap;background:linear-gradient(180deg,#fff, #fff7fb);padding:18px;border-radius:12px;margin:18px auto 0;color:var(--muted);box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);width:min(100%, 420px);line-height:1.7;text-align:center;max-height:60vh;overflow:auto;}
 .reveal h2{margin-bottom:8px;text-align:center;color:var(--crushed-berry)}
 .reveal-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
 .muted{background:transparent;border:1px solid rgba(136,13,30,0.06);padding:8px 12px;border-radius:10px;color:var(--crushed-berry)}
